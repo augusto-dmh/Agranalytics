@@ -1,0 +1,50 @@
+Table farmers {
+  id bigint [primary key, increment]
+  full_name varchar(255)
+  phone_number varchar(255)
+  email varchar(255) [unique]
+  password varchar(255)
+}
+
+Table farms {
+  id bigint [primary key, increment]
+  farmer_id bigint
+  name varchar(255)
+  address varchar(255)
+  size_in_ha decimal(8,2)
+  soil_type_id bigint
+  irrigation_method_id bigint
+}
+
+Table soil_types {
+  id bigint [primary key, increment]
+  name varchar(255)
+  description varchar(255)
+  ph_min decimal(3,1)
+  ph_max decimal(3,1)
+  organic_matter_percentage decimal(5,2)
+}
+
+Table irrigation_methods {
+  id bigint [primary key, increment]
+  name varchar(255)
+  description varchar(255)
+  efficiency decimal(5,2)
+}
+
+Table crops {
+  id bigint [primary key, increment]
+  name varchar(255)
+  scientific_name varchar(255)
+  optimal_ph_min decimal(3,1)
+  optimal_ph_max decimal(3,1)
+  water_requirement_per_season_in_mm smallint
+  growth_duration_in_days varchar(255)
+}
+
+Ref: crops.id <> farms.id
+Ref: farms.soil_type_id > soil_types.id
+Ref: farms.irrigation_method_id > irrigation_methods.id
+Ref: farms.farmer_id > farmers.id
+
+// all integers variations are unsigned
