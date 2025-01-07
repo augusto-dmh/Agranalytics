@@ -7,10 +7,13 @@ use App\Models\SoilType;
 use App\Models\IrrigationMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Farm extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'address',
