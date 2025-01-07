@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Farm;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class IrrigationMethod extends Model
 {
@@ -11,4 +13,9 @@ class IrrigationMethod extends Model
         'description',
         'efficiency',
     ];
+
+    public function farms(): HasMany
+    {
+        return $this->hasMany(Farm::class);
+    }
 }

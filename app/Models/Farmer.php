@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Farm;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Farmer extends Model
 {
@@ -12,4 +14,9 @@ class Farmer extends Model
         'email',
         'password'
     ];
+
+    public function farms(): HasMany
+    {
+        return $this->hasMany(Farm::class);
+    }
 }

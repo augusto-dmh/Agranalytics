@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Farm;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Crop extends Model
 {
@@ -14,4 +16,9 @@ class Crop extends Model
         'water_requirement_per_season_in_mm',
         'growth_duration_in_days',
     ];
+
+    public function farms(): BelongsToMany
+    {
+        return $this->belongsToMany(Farm::class);
+    }
 }
