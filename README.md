@@ -1,21 +1,21 @@
 # Agranalytics
-A management/analytics application for farmers
+<p>A management/analytics application for farmers</p>
+<p>In 05/01/2025, a brainstorm over the idea was made: from a simple management to a more advanced data collection involving external APIs and reports generation. The main sketches area attached in topic "sketches" below.</p>
 
-## Planning
-In 05/01/2025, a brainstorm over the idea was made: from a simple management to a more advanced data collection involving external APIs and reports generation. The main sketches area attached in topic "sketches" below.
+</br>
 
 ## Iterations
-
-#### 1º Iteration
+#### 1º Iteration (2024/01/06 - 2024/01/07)
 - [x] Brainstorm session / Definition of the first iterations
-- [ ] Initial database structure
-- [ ] Core entities around the application
-- [ ] Test seeds for these entities
+- [x] Initial database structure
+- [x] Core entities around the application
+- [x] Test seeds for these entities
 #### 2º Iteration
 Initial models' cruds and simple dashboards for farms, crop_farm and farmer instances.
 #### 3º Iteration
 Visual identity (logo, color pallete, pages style).
 
-## Sketches
-<img src="https://github.com/user-attachments/assets/3c8cfd40-c735-4687-bed0-828285cdf3db" alt="IMG_20250106_142226" width="300" height="400">
-<img src="https://github.com/user-attachments/assets/3e69a55d-6494-4a4e-b50c-e6f3684f1498" alt="IMG_20250106_142251" width="300" height="400">
+</br>
+
+## Current Database Structure
+![db_diagram](https://github.com/user-attachments/assets/c6ba410b-9c6f-43a4-b0ff-6798c5134e3b)
