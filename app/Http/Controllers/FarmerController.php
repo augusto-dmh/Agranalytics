@@ -39,7 +39,7 @@ class FarmerController extends Controller
 
     public function update(Request $request, Farmer $farmer)
     {
-        $farmer->update(getUpdateData($request->farmer, $farmer, ['password']));
+        $farmer->update($request->farmer);
 
         return view('farmers.edit', compact('farmer'));
     }
