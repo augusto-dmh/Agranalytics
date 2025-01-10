@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Farmer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\FarmerRequest;
 
 class FarmerController extends Controller
 {
@@ -20,9 +21,9 @@ class FarmerController extends Controller
         return view('farmers.create');
     }
 
-    public function store(Request $request)
+    public function store(FarmerRequest $request)
     {
-        $farmer = Farmer::create($request->farmer);
+        $farmer = Farmer::create($request->validated());
 
         return view('farmers.edit', compact('farmer'));
     }
@@ -37,11 +38,11 @@ class FarmerController extends Controller
         return view('farmers.edit', compact('farmer'));
     }
 
-    public function update(Request $request, Farmer $farmer)
+    public function update(FarmerRequest $request, Farmer $farmer)
     {
-        $farmer->update($request->farmer);
+        $farmer->update($request->validated());
 
-        return view('farmers.edit', compact('farmer'));
+        return redirect()->back();
     }
 
     public function destroy($farmerId)

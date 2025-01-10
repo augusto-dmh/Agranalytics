@@ -4,24 +4,39 @@
         @method('PUT')
 
         <div>
-            <label for="farmer.full_name">Full Name</label>
-            <input type="text" id="farmer.full_name" name="farmer[full_name]" value="{{ $farmer->full_name }}"/>
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" value="{{ old('full_name', $farmer->full_name) }}"/>
+            @error('full_name')
+                <p class="text-red-500 alert alert-danger">{{ $message }}</p>
+            @enderror
         </div>
         <div>
-            <label for="farmer.phone_number">Phone Number</label>
-            <input type="text" id="farmer.phone_number" name="farmer[phone_number]" value="{{ $farmer->phone_number }}"/>
+            <label for="phone_number">Phone Number</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number', $farmer->phone_number) }}"/>
+            @error('phone_number')
+                <p class="text-red-500 alert alert-danger">{{ $message }}</p>
+            @enderror
         </div>
         <div>
-            <label for="farmer.email">Email</label>
-            <input type="email" id="farmer.email" name="farmer[email]" value="{{ $farmer->email }}" />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ old('email', $farmer->email) }}" />
+            @error('email')
+                <p class="text-red-500 alert alert-danger">{{ $message }}</p>
+            @enderror
         </div>
         <div>
-            <label for="farmer.password">Password</label>
-            <input type="password" id="farmer.password" name="farmer[password]" />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" value="{{ old('password') }}"/>
+            @error('password')
+                <p class="text-red-500 alert alert-danger">{{ $message }}</p>
+            @enderror
         </div>
         <div>
-            <label for="farmer.password_confirmation">Password Confirmation</label>
-            <input type="password_confirmation" id="farmer.password_confirmation" name="farmer[password_confirmation]" />
+            <label for="password_confirmation">Password Confirmation</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" />
+            @error('password_confirmation')
+                <p class="text-red-500 alert alert-danger">{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit">Update</button>
