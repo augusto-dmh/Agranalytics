@@ -25,6 +25,8 @@ class FarmerController extends Controller
     {
         $farmer = Farmer::create($request->validated());
 
+        $request->session()->flash('success', 'Farmer created successfully');
+
         return view('farmers.edit', compact('farmer'));
     }
 
@@ -42,6 +44,8 @@ class FarmerController extends Controller
     {
         $farmer->update($request->validated());
 
+        request()->session()->flash('success', 'Farmer updated successfully');
+
         return redirect()->back();
     }
 
@@ -50,6 +54,8 @@ class FarmerController extends Controller
         DB::table('farmers')
             ->where('id', $farmerId)
             ->delete();
+
+        request()->session()->flash('success', 'Farmer deleted successfully');
 
         $farmers = Farmer::paginate(10);
 
