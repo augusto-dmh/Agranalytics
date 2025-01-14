@@ -25,10 +25,7 @@ class CropController extends Controller
     {
         $crop = Crop::create($request->validated());
 
-        return redirect()->back()->with([
-            'success' => 'Crop created successfully',
-            'cta' => ['message' => 'See it here', 'link' => route('crops.edit', $crop)],
-        ]);
+        return redirect()->route('crops.edit', $crop)->with('success', 'Crop created successfully');
     }
 
     public function show(Crop $crop)

@@ -55,5 +55,11 @@ class DatabaseSeeder extends Seeder
 
             DB::table('crop_farm')->insert($cropFarmData);
         }
+
+        if (app()->environment('production')) {
+            $this->call([
+                CropSeeder::class,
+            ]);
+        }
     }
 }
