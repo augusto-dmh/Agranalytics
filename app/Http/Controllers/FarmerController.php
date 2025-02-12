@@ -25,9 +25,10 @@ class FarmerController extends Controller
     {
         $farmer = Farmer::create($request->validated());
 
-        $request->session()->flash('success', 'Farmer created successfully');
-
-        return view('farmers.edit', compact('farmer'));
+        return redirect()->back()->with([
+            'success' => 'Farmer created successfully',
+            'cta' => ['message' => 'See it here', 'link' => route('farmers.edit', $farmer)],
+        ]);
     }
 
     public function show(Farmer $farmer)

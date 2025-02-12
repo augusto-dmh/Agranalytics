@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <x-toast :openDurationInS="0.2" :exhibitionDurationAfterOpenedInS="3" :closeDurationIsInS="0.2"/>
+    <x-toast :openDurationInS="0.2" :exhibitionDurationAfterOpenedInS="3" :closeDurationInS="0.2" />
     {{ $slot }}
 </body>
 </html>

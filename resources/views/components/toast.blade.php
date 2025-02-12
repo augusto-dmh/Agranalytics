@@ -1,4 +1,4 @@
-<div class="toast-wrapper fixed transform -translate-x-1/2 -translate-y-[400%] left-1/2 top-1/2 w-96">
+<div class="toast-wrapper fixed transform -translate-x-1/2 -translate-y-[400%] left-1/2 top-[55%] w-96">
     <div
     {{-- Define style based on `toastKey` prop --}}
         @class([
@@ -10,7 +10,10 @@
         ])
     >
         <button type="button" class="absolute top-0 appearance-none close-btn right-2">x</button>
-        <p>{{ session($toastKey)  }}</p>
+        <div class="flex flex-col items-center gap-1">
+            <p>{{ session($toastKey)  }}</p>
+            @if($cta)<a href="{{ $cta['link'] }}" class="text-sm underline cursor-pointer">{{ $cta['message'] }}</a>@endif
+        </div>
     </div>
 </div>
 
@@ -29,7 +32,7 @@
             toast.classList.add('animate-fadeOut');
             setTimeout(() => {
                 toastWrapper.remove();
-            }, @json($closeDurationIsInS * 1000));
+            }, @json($closeDurationInS * 1000));
         }
     }, @json($exhibitionDurationAfterOpenedInS) * 1000);
 
@@ -38,8 +41,8 @@
     if (@json($openDurationInS)) {
         toast.style.setProperty('--fadeIn-duration', `${@json($openDurationInS)}s`);
     }
-    if (@json($closeDurationIsInS)) {
-        toast.style.setProperty('--fadeOut-duration', `${@json($closeDurationIsInS)}s`);
+    if (@json($closeDurationInS)) {
+        toast.style.setProperty('--fadeOut-duration', `${@json($closeDurationInS)}s`);
     }
 
     // Define "class toggling" to monitor if the tost is hovered or not (crucial for the logic right below)
@@ -59,6 +62,6 @@
         toast.classList.add('animate-fadeOut');
         setTimeout(() => {
             toastWrapper.remove();
-        }, @json($closeDurationIsInS * 1000));
+        }, @json($closeDurationInS * 1000));
     });
 </script>
