@@ -24,3 +24,17 @@ if (!function_exists('getUpdateData')) {
         return $updateData;
     }
 }
+
+if (!function_exists('getAllNonFKAttributes')) {
+    /**
+     * Get the attributes of a model that do not represent foreign keys
+     *
+     * @param \Illuminate\Database\Eloquent\Model $modelInstance The instance of a model to get the attributes from.
+     */
+    function getAllNonFKAttributes($modelInstance)
+    {
+        return array_filter($modelInstance->getFillable(), function ($attributeName) {
+            return substr($attributeName, -3) !== '_id';
+        });
+    }
+}
