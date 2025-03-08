@@ -21,7 +21,7 @@ class FarmerFactory extends Factory
             'full_name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'phone_number' => $this->faker->numerify('(###) ###-####'),
-            'password' => bcrypt('Password123'),
+            'password' => 'Password123!',
         ];
     }
 }

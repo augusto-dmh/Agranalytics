@@ -16,11 +16,14 @@ class SoilTypeFactory extends Factory
      */
     public function definition(): array
     {
+        $php_min = $this->faker->randomFloat(1, 3, 6.5);
+        $php_max = $this->faker->randomFloat(1, $php_min, 14);
+
         return [
             'name' => $this->faker->name,
             'description' => $this->faker->text(),
-            'ph_min' => $this->faker->randomFloat(1, 3, 6.5),
-            'ph_max' => $this->faker->randomFloat(1, 6.6, 10),
+            'ph_min' => $php_min,
+            'ph_max' => $php_max,
             'organic_matter_percentage' => $this->faker->randomFloat(1, 1.0, 10.0),
         ];
     }
