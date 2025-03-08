@@ -22,21 +22,24 @@ class IrrigationMethodRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
-            'efficiency' => ['required', 'numeric', 'min:0', 'max:100'],
+            'name' => ['bail', 'required', 'string', 'max:255'],
+            'description' => ['bail', 'required', 'string'],
+            'efficiency' => ['bail', 'required', 'numeric', 'min:0', 'max:100'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            '*.required' => 'This field is required.',
-            'name.max' => 'Name may not be greater than 255 characters.',
-            '*.string' => ':attribute must contain text.',
-            '*.numeric' => ':attribute must contain a number.',
-            'efficiency.min' => 'Efficiency must be at least 0.',
-            'efficiency.max' => 'Efficiency may not be greater than 100.',
+            'name.required' => 'name is required.',
+            'name.max' => 'name may not be greater than 255 characters.',
+            'name.string' => 'name must contain text.',
+            'description.required' => 'description is required.',
+            'description.string' => 'description must contain text.',
+            'efficiency.required' => 'efficiency is required.',
+            'efficiency.numeric' => 'efficiency must be a number.',
+            'efficiency.min' => 'efficiency must be at least 0.',
+            'efficiency.max' => 'efficiency may not be greater than 100.',
         ];
     }
 }

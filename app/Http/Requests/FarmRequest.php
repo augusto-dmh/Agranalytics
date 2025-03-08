@@ -22,29 +22,35 @@ class FarmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'farmer_id' => ['required', 'exists:farmers,id'],
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'size_in_ha' => ['required', 'numeric', 'regex:/^\d{1,6}(\.\d{1,2})?$/'],
-            'soil_type_id' => ['required', 'exists:soil_types,id'],
-            'irrigation_method_id' => ['required', 'exists:irrigation_methods,id'],
-            'crop_id.*' => ['nullable', 'exists:crops,id'],
+            'farmer_id' => ['bail', 'required', 'exists:farmers,id'],
+            'name' => ['bail', 'required', 'string', 'max:255'],
+            'address' => ['bail', 'required', 'string', 'max:255'],
+            'size_in_ha' => ['bail', 'required', 'numeric', 'between:0,999999.99'],
+            'soil_type_id' => ['bail', 'required', 'exists:soil_types,id'],
+            'irrigation_method_id' => ['bail', 'required', 'exists:irrigation_methods,id'],
+            'crop_id.*' => ['bail', 'nullable', 'exists:crops,id'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            '*.required' => 'This field is required.',
-            'name.max' => 'Name may not be greater than 255 characters.',
-            'address.max' => 'Address may not be greater than 255 characters.',
-            '*.string' => ':attribute must contain text.',
-            '*.numeric' => ':attribute must contain a number.',
-            'farmer_id.exists' => 'The selected farmer is invalid.',
-            'size_in_ha.regex' => 'The size in hectares must be a number with up to 6 digits before the decimal point and up to 2 digits after the decimal point.',
-            'soil_type_id.exists' => 'The selected soil type is invalid.',
-            'irrigation_method_id.exists' => 'The selected irrigation method is invalid.',
-            'crop_id.*.exists' => 'The selected crops are invalid.'
+            'farmer_id.required' => 'farmer is required.',
+            'farmer_id.exists' => 'selected farmer is invalid.',
+            'name.required' => 'name is required.',
+            'name.string' => 'name must contain text.',
+            'name.max' => 'name may not be greater than 255 characters.',
+            'address.required' => 'address is required.',
+            'address.string' => 'address must contain text.',
+            'address.max' => 'address may not be greater than 255 characters.',
+            'size_in_ha.required' => 'size is required.',
+            'size_in_ha.numeric' => 'size must be a number.',
+            'size_in_ha.between' => 'size must be between 0 and 999999.99.',
+            'soil_type_id.required' => 'soil type is required.',
+            'soil_type_id.exists' => 'selected soil type is invalid.',
+            'irrigation_method_id.required' => 'irrigation method is required.',
+            'irrigation_method_id.exists' => 'selected irrigation method is invalid.',
+            'crop_id.*.exists' => 'crop of position #:position is invalid.'
         ];
     }
 }
