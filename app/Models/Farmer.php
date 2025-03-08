@@ -25,6 +25,10 @@ class Farmer extends Model
         ];
     }
 
+    protected $hidden = [
+        'password',
+    ];
+
     public function farms(): HasMany
     {
         return $this->hasMany(Farm::class);
