@@ -100,7 +100,7 @@ class FarmController extends Controller
      */
     public function destroy($farmId)
     {
-        DB::table('farms')->where('id', $farmId)->delete();
+        Farm::destroy($farmId);;
 
         return redirect()->back()->with('success', 'Farm deleted successfully');
     }

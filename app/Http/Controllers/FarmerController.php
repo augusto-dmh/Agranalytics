@@ -45,21 +45,13 @@ class FarmerController extends Controller
     {
         $farmer->update($request->validated());
 
-        request()->session()->flash('success', 'Farmer updated successfully');
-
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Farmer updated successfully');
     }
 
     public function destroy($farmerId)
     {
-        DB::table('farmers')
-            ->where('id', $farmerId)
-            ->delete();
+        Farmer::destroy($farmerId);
 
-        request()->session()->flash('success', 'Farmer deleted successfully');
-
-        $farmers = Farmer::paginate(10);
-
-        return view('farmers.index', compact('farmers'));
+        return redirect()->back()->with('success', 'Farmer deleted successfully');
     }
 }

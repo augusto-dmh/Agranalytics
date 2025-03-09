@@ -17,7 +17,7 @@ test('can crop be created with valid input', function () {
     $response = post(route('crops.store'), $cropData);
 
     $response
-        ->assertRedirect(route('crops.edit', 1))
+        ->assertRedirect()
         ->assertSessionHas('success', 'Crop created successfully');
     assertDatabaseHas('crops', [
         'name' => 'Corn',

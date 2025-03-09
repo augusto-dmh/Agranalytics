@@ -25,7 +25,10 @@ class CropController extends Controller
     {
         $crop = Crop::create($request->validated());
 
-        return redirect()->route('crops.edit', $crop)->with('success', 'Crop created successfully');
+        return redirect()->back()->with([
+            'success' => 'Crop created successfully',
+            'cta' => ['message' => 'See it here', 'link' => route('crops.edit', $crop)],
+        ]);
     }
 
     public function show(Crop $crop)
@@ -47,7 +50,7 @@ class CropController extends Controller
 
     public function destroy($cropId)
     {
-        DB::table('crops')->where('id', $cropId)->delete();
+        Crop::destroy($cropId);
 
         return redirect()->back()->with('success', 'Crop deleted successfully');
     }

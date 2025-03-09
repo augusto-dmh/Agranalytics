@@ -50,7 +50,7 @@ class SoilTypeController extends Controller
 
     public function destroy($soilTypeId)
     {
-        DB::table('soil_types')->where('id', $soilTypeId)->delete();
+        SoilType::destroy($soilTypeId);
 
         return redirect()->back()->with('success', 'Soil type deleted successfully');
     }
