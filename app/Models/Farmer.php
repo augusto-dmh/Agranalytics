@@ -18,6 +18,17 @@ class Farmer extends Model
         'password'
     ];
 
+    protected function casts()
+    {
+        return [
+            'password' => 'hashed',
+        ];
+    }
+
+    protected $hidden = [
+        'password',
+    ];
+
     public function farms(): HasMany
     {
         return $this->hasMany(Farm::class);

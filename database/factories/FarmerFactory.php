@@ -20,8 +20,8 @@ class FarmerFactory extends Factory
         return [
             'full_name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'phone_number' => $this->faker->phoneNumber(),
-            'password' => bcrypt('Password123'),
+            'phone_number' => $this->faker->numerify('(###) ###-####'),
+            'password' => 'Password123!',
         ];
     }
 }
